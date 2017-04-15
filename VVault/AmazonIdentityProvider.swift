@@ -11,17 +11,9 @@ import Foundation
 import AWSCore
 import AWSCognitoIdentityProvider
 
-class AmazonIdentityProvider: AWSCognitoCredentialsProviderHelper {
+class AmazonIdentityProvider {
     
-    
-    open var useEnhancedFlow: Bool
-    
-    
-    public init(regionType: AWSRegionType, identityPoolId: String, useEnhancedFlow: Bool, identityProviderManager: AWSIdentityProviderManager?){
-        
-        self.useEnhancedFlow = useEnhancedFlow
-        
-        
-    }
+ 
+
     
 }

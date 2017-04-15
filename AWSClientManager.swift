@@ -101,6 +101,8 @@ class AWSClientManager: NSObject {
             credentialsProvider?.invalidateCachedTemporaryCredentials()
             
             task = credentialsProvider?.getIdentityId()
+            print("Sean needs to know the getIdentityID...................\n")
+            print(task?.result ?? "I guess there is no value at this point")
         }
         
         task?.continueWith(block: {
@@ -154,7 +156,7 @@ class AWSClientManager: NSObject {
         
         self.identityProviderManager = AmazonIdentityProviderManager.sharedInstance
         
-        
+        /*
         let identityProvider = DeveloperAuthenticatedIdentityProvider(
             regionType: Constants.COGNITO_REGIONTYPE,
             identityPoolId: Constants.COGNITO_IDENTITY_POOL_ID,
@@ -162,8 +164,8 @@ class AWSClientManager: NSObject {
             authClient: self.devAuthClient,
             identityProviderManager: self.identityProviderManager)
         
-        
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: Constants.COGNITO_REGIONTYPE, unauthRoleArn: nil, authRoleArn: nil, identityProvider: identityProviderManager)
+        */
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: Constants.COGNITO_REGIONTYPE, identityPoolId: Constants.COGNITO_IDENTITY_POOL_ID, identityProviderManager: identityProviderManager)
  
         
         
