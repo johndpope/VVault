@@ -89,7 +89,7 @@ class AWSClientManager: NSObject {
         var task: AWSTask<NSString>?
         
         if self.credentialsProvider == nil {
-            
+            print("I guess that the credential Provider is nil at this point...................\n")
             task = self.initializeClients(logins)
             self.identityProviderManager?.mergeLogins(logins)
             
@@ -136,8 +136,12 @@ class AWSClientManager: NSObject {
         }).continueWith(block: { (task) -> Any? in
             
             if let completionHandler = self.completionHandler {
+                print("Returning the completion handler..............")
+                print(task.isFaulted)
                 return completionHandler(task)
             }
+            print("Printing the result right now")
+            print(task.result as! String)
             return nil
         })
     }
@@ -220,6 +224,8 @@ class AWSClientManager: NSObject {
                 let token = userSession?.idToken?.tokenString ?? ""
                 self.keyChain[self.COGNITO_USERPOOL_PROVIDER] = provider
                 self.completeLogin([provider as NSString: token as NSString])
+                print("I need to know the identity ID.............>Thi si si Sean")
+                print(self.credentialsProvider?.identityId ?? "I guess there is no identity ID")
             }
             if task.isCompleted {
                 print("Task is completed")
