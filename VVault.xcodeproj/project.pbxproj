@@ -7,15 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05E181AE6698FFB357848164 /* Pods_VVault.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200DBAC1188634CB6D7B5666 /* Pods_VVault.framework */; };
 		A7379D711E97315A00489BAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7379D701E97315A00489BAC /* AppDelegate.swift */; };
 		A7379D731E97315A00489BAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7379D721E97315A00489BAC /* ViewController.swift */; };
 		A7379D761E97315A00489BAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7379D741E97315A00489BAC /* Main.storyboard */; };
 		A7379D791E97315A00489BAC /* VVault.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7379D771E97315A00489BAC /* VVault.xcdatamodeld */; };
 		A7379D7B1E97315A00489BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7379D7A1E97315A00489BAC /* Assets.xcassets */; };
 		A7379D7E1E97315A00489BAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7379D7C1E97315A00489BAC /* LaunchScreen.storyboard */; };
+		A7379D861E97340800489BAC /* AWSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7379D851E97340800489BAC /* AWSConstants.swift */; };
+		A78A23C41EA102AA004A6FCB /* AWSClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A23C31EA102AA004A6FCB /* AWSClientManager.swift */; };
+		A78A23CA1EA1147E004A6FCB /* CognitoHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A23C91EA1147E004A6FCB /* CognitoHomeViewController.swift */; };
+		A78A23CC1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A23CB1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift */; };
+		A78A23CE1EA15112004A6FCB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A23CD1EA15112004A6FCB /* Constants.swift */; };
+		A78A23D01EA23372004A6FCB /* DeveloperAuthenticated in Resources */ = {isa = PBXBuildFile; fileRef = A78A23CF1EA23372004A6FCB /* DeveloperAuthenticated */; };
+		A78A23D81EA23CB2004A6FCB /* AmazonIdentityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A23D71EA23CB2004A6FCB /* AmazonIdentityProvider.swift */; };
+		A7FD11121E9738D6004CDCA2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD11111E9738D6004CDCA2 /* SignInViewController.swift */; };
+		A7FD11141E973906004CDCA2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD11131E973906004CDCA2 /* SignUpViewController.swift */; };
+		A7FD11161E973FA4004CDCA2 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7FD11151E973FA4004CDCA2 /* SignUp.storyboard */; };
+		A7FD11181E9742F7004CDCA2 /* MFA.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7FD11171E9742F7004CDCA2 /* MFA.storyboard */; };
+		A7FD111A1E97431F004CDCA2 /* MFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD11191E97431F004CDCA2 /* MFAViewController.swift */; };
+		A7FD111C1E974E0F004CDCA2 /* SignUpConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD111B1E974E0F004CDCA2 /* SignUpConfirmationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		200DBAC1188634CB6D7B5666 /* Pods_VVault.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VVault.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		225258C25A89B6466AA0F6AB /* Pods-VVault.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VVault.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VVault/Pods-VVault.debug.xcconfig"; sourceTree = "<group>"; };
 		A7379D6D1E97315A00489BAC /* VVault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7379D701E97315A00489BAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7379D721E97315A00489BAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +40,20 @@
 		A7379D7A1E97315A00489BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7379D7D1E97315A00489BAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7379D7F1E97315A00489BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7379D851E97340800489BAC /* AWSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSConstants.swift; sourceTree = "<group>"; };
+		A78A23C31EA102AA004A6FCB /* AWSClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWSClientManager.swift; path = ../AWSClientManager.swift; sourceTree = "<group>"; };
+		A78A23C91EA1147E004A6FCB /* CognitoHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CognitoHomeViewController.swift; sourceTree = "<group>"; };
+		A78A23CB1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonIdentityProviderManager.swift; sourceTree = "<group>"; };
+		A78A23CD1EA15112004A6FCB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
+		A78A23CF1EA23372004A6FCB /* DeveloperAuthenticated */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DeveloperAuthenticated; sourceTree = "<group>"; };
+		A78A23D71EA23CB2004A6FCB /* AmazonIdentityProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonIdentityProvider.swift; sourceTree = "<group>"; };
+		A7FD11111E9738D6004CDCA2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		A7FD11131E973906004CDCA2 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A7FD11151E973FA4004CDCA2 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		A7FD11171E9742F7004CDCA2 /* MFA.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MFA.storyboard; path = ../MFA.storyboard; sourceTree = "<group>"; };
+		A7FD11191E97431F004CDCA2 /* MFAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFAViewController.swift; sourceTree = "<group>"; };
+		A7FD111B1E974E0F004CDCA2 /* SignUpConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpConfirmationViewController.swift; sourceTree = "<group>"; };
+		B1A1D68F87D2623551E3A972 /* Pods-VVault.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VVault.release.xcconfig"; path = "Pods/Target Support Files/Pods-VVault/Pods-VVault.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +61,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05E181AE6698FFB357848164 /* Pods_VVault.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26CE06772BB2CDC83F706CF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				200DBAC1188634CB6D7B5666 /* Pods_VVault.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64835E3A7B756BFC82F09119 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				225258C25A89B6466AA0F6AB /* Pods-VVault.debug.xcconfig */,
+				B1A1D68F87D2623551E3A972 /* Pods-VVault.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A7379D641E97315A00489BAC = {
 			isa = PBXGroup;
 			children = (
 				A7379D6F1E97315A00489BAC /* VVault */,
 				A7379D6E1E97315A00489BAC /* Products */,
+				64835E3A7B756BFC82F09119 /* Pods */,
+				26CE06772BB2CDC83F706CF6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +106,26 @@
 		A7379D6F1E97315A00489BAC /* VVault */ = {
 			isa = PBXGroup;
 			children = (
+				A78A23C31EA102AA004A6FCB /* AWSClientManager.swift */,
+				A78A23CD1EA15112004A6FCB /* Constants.swift */,
+				A78A23CB1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift */,
+				A78A23C91EA1147E004A6FCB /* CognitoHomeViewController.swift */,
 				A7379D701E97315A00489BAC /* AppDelegate.swift */,
 				A7379D721E97315A00489BAC /* ViewController.swift */,
 				A7379D741E97315A00489BAC /* Main.storyboard */,
 				A7379D7A1E97315A00489BAC /* Assets.xcassets */,
+				A78A23CF1EA23372004A6FCB /* DeveloperAuthenticated */,
 				A7379D7C1E97315A00489BAC /* LaunchScreen.storyboard */,
 				A7379D7F1E97315A00489BAC /* Info.plist */,
 				A7379D771E97315A00489BAC /* VVault.xcdatamodeld */,
+				A7379D851E97340800489BAC /* AWSConstants.swift */,
+				A7FD11111E9738D6004CDCA2 /* SignInViewController.swift */,
+				A7FD11131E973906004CDCA2 /* SignUpViewController.swift */,
+				A7FD111B1E974E0F004CDCA2 /* SignUpConfirmationViewController.swift */,
+				A7FD11191E97431F004CDCA2 /* MFAViewController.swift */,
+				A7FD11151E973FA4004CDCA2 /* SignUp.storyboard */,
+				A7FD11171E9742F7004CDCA2 /* MFA.storyboard */,
+				A78A23D71EA23CB2004A6FCB /* AmazonIdentityProvider.swift */,
 			);
 			path = VVault;
 			sourceTree = "<group>";
@@ -74,9 +137,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7379D821E97315A00489BAC /* Build configuration list for PBXNativeTarget "VVault" */;
 			buildPhases = (
+				066E1A511D925C20A8995933 /* [CP] Check Pods Manifest.lock */,
 				A7379D691E97315A00489BAC /* Sources */,
 				A7379D6A1E97315A00489BAC /* Frameworks */,
 				A7379D6B1E97315A00489BAC /* Resources */,
+				A72B51951123D44D355FEF92 /* [CP] Embed Pods Frameworks */,
+				CCDE07C662B1D41751941A03 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -100,6 +166,7 @@
 					A7379D6C1E97315A00489BAC = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = GDTG5SQZRN;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -128,21 +195,82 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7379D7E1E97315A00489BAC /* LaunchScreen.storyboard in Resources */,
+				A78A23D01EA23372004A6FCB /* DeveloperAuthenticated in Resources */,
 				A7379D7B1E97315A00489BAC /* Assets.xcassets in Resources */,
+				A7FD11181E9742F7004CDCA2 /* MFA.storyboard in Resources */,
+				A7FD11161E973FA4004CDCA2 /* SignUp.storyboard in Resources */,
 				A7379D761E97315A00489BAC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		066E1A511D925C20A8995933 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A72B51951123D44D355FEF92 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VVault/Pods-VVault-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCDE07C662B1D41751941A03 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VVault/Pods-VVault-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A7379D691E97315A00489BAC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A78A23D81EA23CB2004A6FCB /* AmazonIdentityProvider.swift in Sources */,
+				A7FD11141E973906004CDCA2 /* SignUpViewController.swift in Sources */,
+				A7FD111A1E97431F004CDCA2 /* MFAViewController.swift in Sources */,
 				A7379D731E97315A00489BAC /* ViewController.swift in Sources */,
+				A7379D861E97340800489BAC /* AWSConstants.swift in Sources */,
 				A7379D711E97315A00489BAC /* AppDelegate.swift in Sources */,
+				A78A23C41EA102AA004A6FCB /* AWSClientManager.swift in Sources */,
+				A78A23CE1EA15112004A6FCB /* Constants.swift in Sources */,
+				A7FD11121E9738D6004CDCA2 /* SignInViewController.swift in Sources */,
+				A78A23CC1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift in Sources */,
 				A7379D791E97315A00489BAC /* VVault.xcdatamodeld in Sources */,
+				A7FD111C1E974E0F004CDCA2 /* SignUpConfirmationViewController.swift in Sources */,
+				A78A23CA1EA1147E004A6FCB /* CognitoHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,26 +391,35 @@
 		};
 		A7379D831E97315A00489BAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 225258C25A89B6466AA0F6AB /* Pods-VVault.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = GDTG5SQZRN;
 				INFOPLIST_FILE = VVault/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sz7218.VVault;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VVault-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		A7379D841E97315A00489BAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1A1D68F87D2623551E3A972 /* Pods-VVault.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = GDTG5SQZRN;
 				INFOPLIST_FILE = VVault/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sz7218.VVault;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VVault-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -306,6 +443,7 @@
 				A7379D841E97315A00489BAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
