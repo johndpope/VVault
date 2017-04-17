@@ -17,22 +17,38 @@ class SignInViewController: UIViewController
     @IBOutlet weak var password: UITextField?
     @IBOutlet weak var signInButton: UIButton?
     @IBOutlet weak var signUpButton: UIButton?
+    @IBOutlet weak var signOutButton: UIButton?
     @IBOutlet weak var forgetPasswordButton: UIButton?
     
     override func viewDidLoad() {
-        //Do something
-        //ustomProviderButton.addTarget(self, action: #selector(self.handleCustomSignIn), for: .touchUpInside)
         
-        signInButton?.addTarget(self, action: #selector(self.handleSignIn), for: .touchUpInside)
-        signUpButton?.addTarget(self, action: #selector(self.handleSignUp), for: .touchUpInside)
-        forgetPasswordButton?.addTarget(self, action: #selector(self.handleForgetPassword), for: .touchUpInside)
+        self.disableUI()
+        
+        if AmazonClientManager.sharedInstance.isConfigured() {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            
+            AmazonClientManager.sharedInstance.resumeSession {
+                (task) -> Any? in
+                
+                DispatchQueue.main.async {
+                    self.refreshUI()
+                }
+                return nil
+            }
+        } else {
+            let missingConfigAlert = UIAlertController(title: "Missing Configuration", message: "Please check Constants.swift and set appropriate values", preferredStyle: .alert)
+            missingConfigAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(missingConfigAlert, animated: true, completion: nil)
+        }
+        
     }
     
-    func handleSignIn()  {
+    @IBAction func handleSignIn(_ sender: AnyObject)  {
         //Sign in code right in here
         print("handle userPool sign in")
+        self.disableUI()
         
-        AWSClientManager.sharedInstance.loginFromView(self, withCompletionHandler:  {
+        AmazonClientManager.sharedInstance.loginFromView(self, withCompletionHandler:  {
             (task: AWSTask!) -> AnyObject! in
             DispatchQueue.main.async {
                 self.refreshUI()
@@ -42,23 +58,63 @@ class SignInViewController: UIViewController
         
     }
     
-    func refreshUI() {
-        print("refreshingUI.......")
+    @IBAction func handleSignOut(_ sender: AnyObject) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        self.disableUI()
+        
+        AmazonClientManager.sharedInstance.logOut {
+            (task) -> AnyObject! in
+            DispatchQueue.main.async {
+                self.refreshUI()
+            }
+            return nil
+        }
+        
     }
     
-    func handleSignUp()  {
+    func disableUI() {
+        self.signInButton?.isEnabled = false
+        
+        self.signOutButton?.isEnabled = false
+        
+    }
+    
+    func refreshUI() {
+        print("refreshingUI.......")
+   
+        let loggedIn = AmazonClientManager.sharedInstance.isLoggedIn()
+        print("Is the user has already login ? ----> \(loggedIn)")
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        self.signInButton?.isEnabled = true
+
+        
+        if loggedIn {
+            self.signInButton?.setTitle("Link", for: UIControlState())
+            self.signInButton?.isEnabled = false
+        } else {
+            self.signInButton?.setTitle("Login", for: UIControlState())
+        }
+        self.signOutButton?.isEnabled = loggedIn
+        
+    }
+    
+    
+    @IBAction func handleSignUp()  {
         //Sign up code right in here
         print("handle userPool sign up")
+        self.disableUI()
         let storyBoard = UIStoryboard.init(name: "SignUp", bundle: nil)
         let viewController = storyBoard.instantiateViewController(withIdentifier: "SignUp")
         self.present(viewController, animated: true, completion: nil)
     }
     
-    func handleForgetPassword()  {
+    @IBAction func handleForgetPassword()  {
         //Forget password code in here
         print("handle userPool forget password")
 
-        
     }
+    
+
     
 }

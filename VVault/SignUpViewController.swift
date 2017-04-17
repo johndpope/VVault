@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.pool = AWSCognitoIdentityUserPool.init(forKey: AWSCognitoUserPoolsSignInProviderKey)
+        self.pool = AWSCognitoIdentityUserPool.init(forKey: "UserPool")
         self.userPool = AWSCognitoIdentityUserPool(forKey: "UserPool")
         //Do something
         cancel?.addTarget(self, action: #selector(cancelToSignUp), for: .touchUpInside)
@@ -37,6 +37,8 @@ class SignUpViewController: UIViewController {
             signUpConfirmationViewController.user = self.pool?.getUser((self.userName?.text)!)
         }
     }
+    
+    
     
     @IBAction func onSignUp(_ sender: AnyObject) {
         

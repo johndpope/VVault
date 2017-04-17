@@ -1,50 +1,66 @@
-//
-//  AWSClientManager.swift
-//  VVault
-//
-//  Created by Sean Zhang on 4/14/17.
-//  Copyright © 2017 Sean Zhang. All rights reserved.
-//
+/*
+ * Copyright 2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://aws.amazon.com/apache2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+/*
+ * Copyright 2016 BJSS, Inc. or its affiliates. All Rights Reserved.
+ *
+ * Created by Andrea Scuderi on 08/09/2016.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  https://github.com/bjss/aws-sdk-ios-samples/blob/master/LICENSE
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
 
 import Foundation
 import UICKeyChainStore
 import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
-import FBSDKCoreKit
-import FBSDKLoginKit
-import FBSDKShareKit
 
-class AWSClientManager: NSObject {
+class AmazonClientManager : NSObject {
     
-    static let sharedInstance = AWSClientManager()
+    static let sharedInstance = AmazonClientManager()
     
     enum Provider: String {
-        case FB, GOOGLE, AMAZON,TWITTER, DIGITS, BYOI, COGNITO_USERPOOL
+        case COGNITO_USERPOOL
     }
     
-    //Keychain Constants
-    let FB_PROVIDER = Provider.FB.rawValue
-    let GOOGLE_PROVIDER = Provider.GOOGLE.rawValue
-    let AMAZON_PROVIDER = Provider.AMAZON.rawValue
-    let TWITTER_PROVIDER = Provider.TWITTER.rawValue
-    let DIGITS_PROVIDER = Provider.DIGITS.rawValue
-    let BYOI_PROVIDER = Provider.BYOI.rawValue
+    
+    //KeyChain Constants
     let COGNITO_USERPOOL_PROVIDER = Provider.COGNITO_USERPOOL.rawValue
     
-    typealias AWSContinuationBlock =  (AWSTask<AnyObject>) -> Any?
+    typealias AWSContinuationBlock = (AWSTask<AnyObject>)->Any?
     
     //Properties
     var keyChain: UICKeyChainStore
     var completionHandler: AWSContinuationBlock?
-    var fbLoginManager: FBSDKLoginManager?
     var credentialsProvider: AWSCognitoCredentialsProvider?
     var loginViewController: UIViewController?
     var identityProviderManager: AmazonIdentityProviderManager?
-   
+    
     
     override init() {
-        keyChain = UICKeyChainStore(service: "\(Bundle.main.bundleIdentifier!).\(AWSClientManager.self)")
+        keyChain = UICKeyChainStore(service: "\(Bundle.main.bundleIdentifier!).\(AmazonClientManager.self)")
+        print("UICKeyChainStore: \(Bundle.main.bundleIdentifier!).\(AmazonClientManager.self)")
         
         super.init()
         
@@ -52,35 +68,27 @@ class AWSClientManager: NSObject {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(_:application, didFinishLaunchingWithOptions: launchOptions)
+        return true
     }
     
-    // MARK: GENERAL LOGIN
     
-    func isConfiguired() -> Bool {
-        return !(Constants.COGNITO_IDENTITY_USER_POOL_ID == "YourCognitoIdentityPoolId" || Constants.COGNITO_REGIONTYPE == AWSRegionType.Unknown)
+    // MARK: General Login
+    
+    func isConfigured() -> Bool {
+        return !(Constants.COGNITO_IDENTITY_POOL_ID == "YourCognitoIdentityPoolId" || Constants.COGNITO_REGIONTYPE == AWSRegionType.Unknown)
     }
     
     func resumeSession(_ completionHandler: @escaping AWSContinuationBlock) {
         self.completionHandler = completionHandler
         
-        if self.keyChain[FB_PROVIDER] != nil {
-            //self.reloadFBSession()
-        }
-        
         if self.credentialsProvider == nil {
             self.completeLogin(NSMutableDictionary())
         }
-        
     }
     
     //Sends the appropriate URL based on login provider
     func application(_ application: UIApplication,
                      openURL url: URL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        
-        if FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation) {
-            return true
-        }
         
         return false
     }
@@ -89,7 +97,7 @@ class AWSClientManager: NSObject {
         var task: AWSTask<NSString>?
         
         if self.credentialsProvider == nil {
-            print("I guess that the credential Provider is nil at this point...................\n")
+            
             task = self.initializeClients(logins)
             self.identityProviderManager?.mergeLogins(logins)
             
@@ -101,15 +109,13 @@ class AWSClientManager: NSObject {
             credentialsProvider?.invalidateCachedTemporaryCredentials()
             
             task = credentialsProvider?.getIdentityId()
-            print("Sean needs to know the getIdentityID...................\n")
-            print(task?.result ?? "I guess there is no value at this point")
         }
         
         task?.continueWith(block: {
             (task: AWSTask!) -> AnyObject! in
             if (task.error != nil) {
                 let userDefaults = UserDefaults.standard
-                let currentDeviceToken: Data? = userDefaults.object(forKey: DEVICE_TOKEN_KEY) as? Data
+                let currentDeviceToken: Data? = userDefaults.object(forKey: Constants.DEVICE_TOKEN_KEY) as? Data
                 var currentDeviceTokenString : String
                 
                 if let currentDeviceToken = currentDeviceToken {
@@ -121,11 +127,11 @@ class AWSClientManager: NSObject {
                     currentDeviceTokenString = ""
                 }
                 
-                if currentDeviceToken != nil && currentDeviceTokenString != userDefaults.string(forKey: COGNITO_DEVICE_TOKEN_KEY) {
+                if currentDeviceToken != nil && currentDeviceTokenString != userDefaults.string(forKey: Constants.COGNITO_DEVICE_TOKEN_KEY) {
                     
                     AWSCognito.default().registerDevice(currentDeviceToken as Data!).continueWith(block: { (task) -> Any? in
                         if (task.error == nil) {
-                            userDefaults.set(currentDeviceTokenString, forKey: COGNITO_DEVICE_TOKEN_KEY)
+                            userDefaults.set(currentDeviceTokenString, forKey: Constants.COGNITO_DEVICE_TOKEN_KEY)
                             userDefaults.synchronize()
                         }
                         return nil
@@ -136,48 +142,39 @@ class AWSClientManager: NSObject {
         }).continueWith(block: { (task) -> Any? in
             
             if let completionHandler = self.completionHandler {
-                print("Returning the completion handler..............")
-                print(task.isFaulted)
                 return completionHandler(task)
             }
-            print("Printing the result right now")
-            print(task.result as! String)
             return nil
         })
     }
     
     func initializeAWS() {
-        print("Initializing Clients................")
+        print("Initializing Clients...")
         
-        AWSLogger.default().logLevel = .verbose
+        AWSLogger.default().logLevel = AWSLogLevel.verbose
         
-        //Cognito User Pool Configuration
-        let serviceConfiguration = AWSServiceConfiguration(region: AWSRegionConstant , credentialsProvider: nil)
+        //Cognito User Pool config
+        let serviceConfiguration = AWSServiceConfiguration(region: Constants.COGNITO_REGIONTYPE, credentialsProvider: nil)
         
-        let userPoolConfiguration = AWSCognitoIdentityUserPoolConfiguration(clientId: userPoolClientId, clientSecret: userPoolClientSecret, poolId: userPoolId)
+        let userPoolConfiguration = AWSCognitoIdentityUserPoolConfiguration(clientId: Constants.COGNITO_IDENTITY_USER_POOL_APP_CLIENT_ID,
+                                                                            clientSecret: Constants.COGNITO_IDENTITY_USER_POOL_APP_CLIENT_SECRET,
+                                                                            poolId: Constants.COGNITO_IDENTITY_USER_POOL_ID)
         
-        AWSCognitoIdentityUserPool.register(with: serviceConfiguration, userPoolConfiguration: userPoolConfiguration, forKey: "UserPool")
+        AWSCognitoIdentityUserPool.register(with: serviceConfiguration,
+                                            userPoolConfiguration: userPoolConfiguration,
+                                            forKey: "UserPool")
         
         self.identityProviderManager = AmazonIdentityProviderManager.sharedInstance
         
-        /*
-        let identityProvider = DeveloperAuthenticatedIdentityProvider(
+        let credentialsProvider = AWSCognitoCredentialsProvider(
             regionType: Constants.COGNITO_REGIONTYPE,
             identityPoolId: Constants.COGNITO_IDENTITY_POOL_ID,
-            providerName: Constants.DEVELOPER_AUTH_PROVIDER_NAME,
-            authClient: self.devAuthClient,
-            identityProviderManager: self.identityProviderManager)
+            identityProviderManager: identityProviderManager)
         
-        */
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: Constants.COGNITO_REGIONTYPE, identityPoolId: Constants.COGNITO_IDENTITY_POOL_ID, identityProviderManager: identityProviderManager)
- 
-        
-        
-        let defaultServiceConfiguration = AWSServiceConfiguration(region: AWSRegionConstant, credentialsProvider: credentialsProvider)
+        let defaultServiceConfiguration = AWSServiceConfiguration(region: Constants.COGNITO_REGIONTYPE,
+                                                                  credentialsProvider: credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = defaultServiceConfiguration
-        
-        
     }
     
     func initializeClients(_ loginAs: NSMutableDictionary) -> AWSTask<NSString>? {
@@ -188,9 +185,33 @@ class AWSClientManager: NSObject {
         return self.credentialsProvider?.getIdentityId()
     }
     
-
+    func loginFromView(_ theViewController: UIViewController, withCompletionHandler completionHandler: @escaping AWSContinuationBlock) {
+        self.completionHandler = completionHandler
+        self.loginViewController = theViewController
+        self.displayLoginSheet()
+    }
     
-    // MARK: COGNITO LOGIN
+    func logOut(_ completionHandler: @escaping AWSContinuationBlock) {
+        if self.isLoggedInWithCognito() {
+            self.cognitoLogout()
+        }
+        
+        // Wipe credentials
+        self.identityProviderManager?.reset()
+        
+        AWSCognito.default().wipe()
+        self.credentialsProvider?.clearKeychain()
+        
+        self.credentialsProvider?.clearCredentials()
+        
+        AWSTask(result: nil).continueWith(block: completionHandler)
+    }
+    
+    func isLoggedIn() -> Bool {
+        return isLoggedInWithCognito()
+    }
+    
+    // MARK: Cognito Login
     
     func isLoggedInWithCognito() -> Bool {
         let userPool = AWSCognitoIdentityUserPool(forKey: "UserPool")
@@ -198,39 +219,29 @@ class AWSClientManager: NSObject {
         return value
     }
     
-    /*
-     * This function receives the password and username from the UI and then call the
-     * userSession to see if the actual token can be retrieved or not
-     */
-    func cognitoLogin(_ username: String,
-                      password: String,
-                      delegate: AWSCognitoIdentityInteractiveAuthenticationDelegate?,
-                      withCompletionHandler completionHandler: @escaping AWSContinuationBlock) {
-        
+    func cognitoLogin(_ username: String, password: String, delegate: AWSCognitoIdentityInteractiveAuthenticationDelegate?, withCompletionHandler completionHandler: @escaping AWSContinuationBlock) {
         self.completionHandler = completionHandler
         let userPool = AWSCognitoIdentityUserPool(forKey: "UserPool")
         let user = userPool.getUser(username)
-        user.getSession(username, password: password, validationData: nil).continueWith(executor: AWSExecutor.mainThread(), block: { (task: AWSTask<AWSCognitoIdentityUserSession>) -> Any? in
+        user.getSession(username, password: password, validationData: nil).continueWith(executor: AWSExecutor.mainThread(), block: {
+            (task: AWSTask!) -> AnyObject! in
+            
             if task.isCancelled {
-                print("Task is cancelled for login")
-                self.errorAlert("Task is cancelled")
+                self.errorAlert("Login Canceled")
             } else if let error = task.error {
-                print("Task has error and failed to login")
-                self.errorAlert(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.errorAlert("Login failed.\n" + error.localizedDescription)
+                }
+                AWSTask(error: error).continueWith(block: self.completionHandler!)
+                
             } else {
-                print("Login was not cancelled and without an error")
-                let provider = "cognito-idp.us-east-1.amazonaws.com/\(identityPoolId)"
+                
+                let provider = "cognito-idp.us-east-1.amazonaws.com/\(Constants.COGNITO_IDENTITY_USER_POOL_ID)"
                 let userSession = task.result
                 let token = userSession?.idToken?.tokenString ?? ""
                 self.keyChain[self.COGNITO_USERPOOL_PROVIDER] = provider
-                self.completeLogin([provider as NSString: token as NSString])
-                print("I need to know the identity ID.............>Thi si si Sean")
-                print(self.credentialsProvider?.identityId ?? "I guess there is no identity ID")
+                self.completeLogin( [provider as NSString:token as NSString] )
             }
-            if task.isCompleted {
-                print("Task is completed")
-            }
-            print("getSession right now")
             return nil
         })
         
@@ -241,95 +252,6 @@ class AWSClientManager: NSObject {
         let userPool = AWSCognitoIdentityUserPool(forKey: "UserPool")
         userPool.currentUser()?.signOutAndClearLastKnownUser()
         self.keyChain[COGNITO_USERPOOL_PROVIDER] = nil
-    }
-    
-    // MARK: FACEBOOK LOGIN
-    
-    func isLoggedInWithFacebook() -> Bool {
-        let loggedIn = FBSDKAccessToken.current() != nil
-        
-        return self.keyChain[FB_PROVIDER] != nil && loggedIn
-    }
-    
-    func reloadFBSession() {
-        if FBSDKAccessToken.current() != nil {
-            print("Reloading Facebook Session")
-            self.completeFBLogin()
-        }
-    }
-    
-    func fbLogin() {
-        if FBSDKAccessToken.current() != nil {
-            self.completeFBLogin()
-        } else {
-            if self.fbLoginManager == nil {
-                self.fbLoginManager = FBSDKLoginManager()
-                self.fbLoginManager?.logIn(withReadPermissions: ["public_profile"], from: self.loginViewController) {
-                    (result, error) -> Void in
-                    
-                    if (error != nil) {
-                        DispatchQueue.main.async {
-                            self.errorAlert("Error logging in with FB: " + (error?.localizedDescription)!)
-                        }
-                    } else if (result?.isCancelled)! {
-                        //Do nothing
-                    } else {
-                        self.completeFBLogin()
-                    }
-                }
-            }
-        }
-        
-    }
-    
-    func fbLogout() {
-        if self.fbLoginManager == nil {
-            self.fbLoginManager = FBSDKLoginManager()
-        }
-        self.fbLoginManager?.logOut()
-        self.keyChain[FB_PROVIDER] = nil
-    }
-    
-    func completeFBLogin() {
-        self.keyChain[FB_PROVIDER] = "YES"
-        self.completeLogin(["graph.facebook.com" : FBSDKAccessToken.current().tokenString as NSString])
-    }
-    
-    // MARK: UI HELPER
-    
-    func loginFromView(_ theViewController: UIViewController, withCompletionHandler completionHandler: @escaping AWSContinuationBlock) {
-        self.completionHandler = completionHandler
-        self.loginViewController = theViewController
-        self.displayLoginSheet()
-    }
-    
-    
-    func displayLoginSheet()  {
-        
-        //Display the login sheet when click the login button
-        let loginProviders = UIAlertController(title: nil, message: "Login with:", preferredStyle: .actionSheet)
-        
-        //Define Actions
-        let cognitoLoginAction = UIAlertAction(title: "Cognito Login", style: .default) {
-            (alert: UIAlertAction) -> Void in
-            self.COGNITOLogin()
-        }
-        
-        let fbLoginAction = UIAlertAction(title: "Facebook", style: .default) {
-            (alert: UIAlertAction) -> Void in
-            //self.fbLogin()
-        }
-        let googleLoginAction = UIAlertAction(title: "Google", style: .default) {
-            (alert: UIAlertAction) -> Void in
-            //self.googleLogin()
-        }
-        
-        loginProviders.addAction(cognitoLoginAction)
-        loginProviders.addAction(fbLoginAction)
-        loginProviders.addAction(googleLoginAction)
-        
-        self.loginViewController?.present(loginProviders, animated: true, completion: nil)
-        
     }
     
     func COGNITOLogin() {
@@ -356,6 +278,29 @@ class AWSClientManager: NSObject {
         COGNITOLoginAlert.addAction(cancelAction)
         
         self.loginViewController?.present(COGNITOLoginAlert, animated: true, completion: nil)
+    }
+    
+    
+    
+    // MARK: UI Helpers
+    
+    func displayLoginSheet() {
+        let loginProviders = UIAlertController(title: nil, message: "Login With:", preferredStyle: .actionSheet)
+        
+        let cognitoLoginAction = UIAlertAction(title: "Cognito User Pool", style: .default) {
+            (alert: UIAlertAction) -> Void in
+            self.COGNITOLogin()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+            (alert: UIAlertAction!) -> Void in
+            AWSTask(result: nil).continueWith(block: self.completionHandler!)
+        }
+        
+        loginProviders.addAction(cognitoLoginAction)
+        loginProviders.addAction(cancelAction)
+        
+        self.loginViewController?.present(loginProviders, animated: true, completion: nil)
     }
     
     func errorAlert(_ message: String) {

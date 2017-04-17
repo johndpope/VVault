@@ -9,18 +9,13 @@
 /* Begin PBXBuildFile section */
 		05E181AE6698FFB357848164 /* Pods_VVault.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200DBAC1188634CB6D7B5666 /* Pods_VVault.framework */; };
 		A7379D711E97315A00489BAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7379D701E97315A00489BAC /* AppDelegate.swift */; };
-		A7379D731E97315A00489BAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7379D721E97315A00489BAC /* ViewController.swift */; };
 		A7379D761E97315A00489BAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7379D741E97315A00489BAC /* Main.storyboard */; };
 		A7379D791E97315A00489BAC /* VVault.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7379D771E97315A00489BAC /* VVault.xcdatamodeld */; };
 		A7379D7B1E97315A00489BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7379D7A1E97315A00489BAC /* Assets.xcassets */; };
 		A7379D7E1E97315A00489BAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7379D7C1E97315A00489BAC /* LaunchScreen.storyboard */; };
-		A7379D861E97340800489BAC /* AWSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7379D851E97340800489BAC /* AWSConstants.swift */; };
 		A78A23C41EA102AA004A6FCB /* AWSClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A23C31EA102AA004A6FCB /* AWSClientManager.swift */; };
-		A78A23CA1EA1147E004A6FCB /* CognitoHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A23C91EA1147E004A6FCB /* CognitoHomeViewController.swift */; };
 		A78A23CC1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A23CB1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift */; };
 		A78A23CE1EA15112004A6FCB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A23CD1EA15112004A6FCB /* Constants.swift */; };
-		A78A23D01EA23372004A6FCB /* DeveloperAuthenticated in Resources */ = {isa = PBXBuildFile; fileRef = A78A23CF1EA23372004A6FCB /* DeveloperAuthenticated */; };
-		A78A23D81EA23CB2004A6FCB /* AmazonIdentityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78A23D71EA23CB2004A6FCB /* AmazonIdentityProvider.swift */; };
 		A7FD11121E9738D6004CDCA2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD11111E9738D6004CDCA2 /* SignInViewController.swift */; };
 		A7FD11141E973906004CDCA2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD11131E973906004CDCA2 /* SignUpViewController.swift */; };
 		A7FD11161E973FA4004CDCA2 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7FD11151E973FA4004CDCA2 /* SignUp.storyboard */; };
@@ -34,19 +29,15 @@
 		225258C25A89B6466AA0F6AB /* Pods-VVault.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VVault.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VVault/Pods-VVault.debug.xcconfig"; sourceTree = "<group>"; };
 		A7379D6D1E97315A00489BAC /* VVault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7379D701E97315A00489BAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A7379D721E97315A00489BAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A7379D751E97315A00489BAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A7379D781E97315A00489BAC /* VVault.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VVault.xcdatamodel; sourceTree = "<group>"; };
 		A7379D7A1E97315A00489BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7379D7D1E97315A00489BAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7379D7F1E97315A00489BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7379D851E97340800489BAC /* AWSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSConstants.swift; sourceTree = "<group>"; };
 		A78A23C31EA102AA004A6FCB /* AWSClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWSClientManager.swift; path = ../AWSClientManager.swift; sourceTree = "<group>"; };
-		A78A23C91EA1147E004A6FCB /* CognitoHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CognitoHomeViewController.swift; sourceTree = "<group>"; };
 		A78A23CB1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonIdentityProviderManager.swift; sourceTree = "<group>"; };
 		A78A23CD1EA15112004A6FCB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
-		A78A23CF1EA23372004A6FCB /* DeveloperAuthenticated */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DeveloperAuthenticated; sourceTree = "<group>"; };
-		A78A23D71EA23CB2004A6FCB /* AmazonIdentityProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonIdentityProvider.swift; sourceTree = "<group>"; };
+		A78A23D91EA461DF004A6FCB /* VVault.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = VVault.entitlements; sourceTree = SOURCE_ROOT; };
 		A7FD11111E9738D6004CDCA2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A7FD11131E973906004CDCA2 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A7FD11151E973FA4004CDCA2 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -106,26 +97,22 @@
 		A7379D6F1E97315A00489BAC /* VVault */ = {
 			isa = PBXGroup;
 			children = (
-				A78A23C31EA102AA004A6FCB /* AWSClientManager.swift */,
-				A78A23CD1EA15112004A6FCB /* Constants.swift */,
-				A78A23CB1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift */,
-				A78A23C91EA1147E004A6FCB /* CognitoHomeViewController.swift */,
 				A7379D701E97315A00489BAC /* AppDelegate.swift */,
-				A7379D721E97315A00489BAC /* ViewController.swift */,
+				A78A23C31EA102AA004A6FCB /* AWSClientManager.swift */,
+				A78A23CB1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift */,
+				A78A23CD1EA15112004A6FCB /* Constants.swift */,
 				A7379D741E97315A00489BAC /* Main.storyboard */,
-				A7379D7A1E97315A00489BAC /* Assets.xcassets */,
-				A78A23CF1EA23372004A6FCB /* DeveloperAuthenticated */,
 				A7379D7C1E97315A00489BAC /* LaunchScreen.storyboard */,
+				A7379D7A1E97315A00489BAC /* Assets.xcassets */,
 				A7379D7F1E97315A00489BAC /* Info.plist */,
 				A7379D771E97315A00489BAC /* VVault.xcdatamodeld */,
-				A7379D851E97340800489BAC /* AWSConstants.swift */,
+				A78A23D91EA461DF004A6FCB /* VVault.entitlements */,
 				A7FD11111E9738D6004CDCA2 /* SignInViewController.swift */,
 				A7FD11131E973906004CDCA2 /* SignUpViewController.swift */,
 				A7FD111B1E974E0F004CDCA2 /* SignUpConfirmationViewController.swift */,
 				A7FD11191E97431F004CDCA2 /* MFAViewController.swift */,
 				A7FD11151E973FA4004CDCA2 /* SignUp.storyboard */,
 				A7FD11171E9742F7004CDCA2 /* MFA.storyboard */,
-				A78A23D71EA23CB2004A6FCB /* AmazonIdentityProvider.swift */,
 			);
 			path = VVault;
 			sourceTree = "<group>";
@@ -195,7 +182,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7379D7E1E97315A00489BAC /* LaunchScreen.storyboard in Resources */,
-				A78A23D01EA23372004A6FCB /* DeveloperAuthenticated in Resources */,
 				A7379D7B1E97315A00489BAC /* Assets.xcassets in Resources */,
 				A7FD11181E9742F7004CDCA2 /* MFA.storyboard in Resources */,
 				A7FD11161E973FA4004CDCA2 /* SignUp.storyboard in Resources */,
@@ -258,11 +244,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A78A23D81EA23CB2004A6FCB /* AmazonIdentityProvider.swift in Sources */,
 				A7FD11141E973906004CDCA2 /* SignUpViewController.swift in Sources */,
 				A7FD111A1E97431F004CDCA2 /* MFAViewController.swift in Sources */,
-				A7379D731E97315A00489BAC /* ViewController.swift in Sources */,
-				A7379D861E97340800489BAC /* AWSConstants.swift in Sources */,
 				A7379D711E97315A00489BAC /* AppDelegate.swift in Sources */,
 				A78A23C41EA102AA004A6FCB /* AWSClientManager.swift in Sources */,
 				A78A23CE1EA15112004A6FCB /* Constants.swift in Sources */,
@@ -270,7 +253,6 @@
 				A78A23CC1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift in Sources */,
 				A7379D791E97315A00489BAC /* VVault.xcdatamodeld in Sources */,
 				A7FD111C1E974E0F004CDCA2 /* SignUpConfirmationViewController.swift in Sources */,
-				A78A23CA1EA1147E004A6FCB /* CognitoHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

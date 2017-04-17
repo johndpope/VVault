@@ -25,11 +25,17 @@
                                 <rect key="frame" x="244" y="617" width="115" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Forget Password"/>
+                                <connections>
+                                    <action selector="handleForgetPassword" destination="BYZ-38-t0r" eventType="touchUpInside" id="GeQ-ES-ikc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pb2-LI-Fde">
                                 <rect key="frame" x="16" y="617" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="handleSignUp" destination="BYZ-38-t0r" eventType="touchUpInside" id="1EQ-aV-D5e"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dUm-85-gTA">
                                 <rect key="frame" x="36" y="252" width="293" height="30"/>
@@ -59,19 +65,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTJ-nE-OJR">
+                                <rect key="frame" x="269" y="357" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="handleSignOut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rQk-oO-RwS"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAm-UK-3iP">
-                                <rect key="frame" x="116" y="357" width="132" height="30"/>
+                                <rect key="frame" x="36" y="357" width="63" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="handleSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sdJ-Bu-EWO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="forgetPasswordButton" destination="tCO-N3-M0Q" id="2he-b9-xch"/>
+                        <outlet property="forgetPasswordButton" destination="tCO-N3-M0Q" id="0g8-kt-Qh8"/>
                         <outlet property="password" destination="Fkc-YN-SeM" id="sFp-vC-Dje"/>
-                        <outlet property="signInButton" destination="QAm-UK-3iP" id="IeY-Ny-9aA"/>
-                        <outlet property="signUpButton" destination="pb2-LI-Fde" id="vjp-mh-sfe"/>
+                        <outlet property="signInButton" destination="QAm-UK-3iP" id="2Y6-X7-yW4"/>
+                        <outlet property="signOutButton" destination="iTJ-nE-OJR" id="cC5-6E-AEG"/>
+                        <outlet property="signUpButton" destination="pb2-LI-Fde" id="RPE-vv-jkx"/>
                         <outlet property="userName" destination="dUm-85-gTA" id="Xaj-NI-fMW"/>
                     </connections>
                 </viewController>
