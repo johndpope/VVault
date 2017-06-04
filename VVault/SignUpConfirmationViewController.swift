@@ -32,6 +32,7 @@ class SignUpConfirmationViewController: UIViewController {
             print("Confirmation code missing. Please enter the confirmation code")
             return
         }
+        
         self.user?.confirmSignUp(self.confirmationCode.text!, forceAliasCreation: true).continueWith(block: {[weak self] (task: AWSTask) -> AnyObject? in
             guard let strongSelf = self else { return nil }
             DispatchQueue.main.async(execute: {

@@ -5,6 +5,7 @@
 //  Created by Sean Zhang on 4/6/17.
 //  Copyright © 2017 Sean Zhang. All rights reserved.
 //
+//
 
 import UIKit
 import CoreData
@@ -15,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var signInViewController: SignInViewController?
-    var mfaViewController: MFAViewController?
+
     var navigationController: UINavigationController?
     var storyboard: UIStoryboard?
     var rememberDeviceCompletionSource: AWSTaskCompletionSource<NSNumber>?
@@ -23,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.rootViewController = UINavigationController(rootViewController: RootViewController())
+        
         return true
     }
     
@@ -55,29 +60,7 @@ extension AppDelegate: AWSCognitoIdentityInteractiveAuthenticationDelegate {
         return self.signInViewController! as! AWSCognitoIdentityPasswordAuthentication
     }
     
-    func startMultiFactorAuthentication() -> AWSCognitoIdentityMultiFactorAuthentication {
-        if (self.mfaViewController == nil) {
-            self.mfaViewController = MFAViewController()
-            self.mfaViewController?.modalPresentationStyle = .popover
-        }
-        DispatchQueue.main.async {
-            if (!self.mfaViewController!.isViewLoaded
-                || self.mfaViewController!.view.window == nil) {
-                //display mfa as popover on current view controller
-                let viewController = self.window?.rootViewController!
-                viewController?.present(self.mfaViewController!,
-                                        animated: true,
-                                        completion: nil)
-                
-                // configure popover vc
-                let presentationController = self.mfaViewController!.popoverPresentationController
-                presentationController?.permittedArrowDirections = UIPopoverArrowDirection.left
-                presentationController?.sourceView = viewController!.view
-                presentationController?.sourceRect = viewController!.view.bounds
-            }
-        }
-        return self.mfaViewController! as! AWSCognitoIdentityMultiFactorAuthentication
-    }
+
     
     func startRememberDevice() -> AWSCognitoIdentityRememberDevice {
         return self

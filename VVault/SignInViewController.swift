@@ -20,7 +20,10 @@ class SignInViewController: UIViewController
     @IBOutlet weak var signOutButton: UIButton?
     @IBOutlet weak var forgetPasswordButton: UIButton?
     
+    
     override func viewDidLoad() {
+        
+        self.navigationController?.navigationBar.isHidden = true
         
         self.disableUI()
         
@@ -41,6 +44,17 @@ class SignInViewController: UIViewController
             self.present(missingConfigAlert, animated: true, completion: nil)
         }
         
+        if AmazonClientManager.sharedInstance.isLoggedIn() {
+            print("User has logged in")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "MainTableVC") as! DDBMainTableViewController
+            self.navigationController?.present(viewController, animated: true, completion: nil)
+            
+        } else {
+            self.navigationController?.popToRootViewController(animated: true)
+            print("User has not login yet")
+        }
+        
     }
     
     @IBAction func handleSignIn(_ sender: AnyObject)  {
@@ -52,6 +66,9 @@ class SignInViewController: UIViewController
             (task: AWSTask!) -> AnyObject! in
             DispatchQueue.main.async {
                 self.refreshUI()
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "MainTableVC") as! DDBMainTableViewController
+                self.navigationController?.pushViewController(viewController, animated: true)
             }
             return nil
         })
@@ -97,8 +114,11 @@ class SignInViewController: UIViewController
         }
         self.signOutButton?.isEnabled = loggedIn
         
+        // IF THE USER HAS SIGNED IN THEN NOW IT IS LET THE MAIN DYNANODB KICKED IN
+        // FIRST LET'S SEGUE TO THE
+        //
+        //
     }
-    
     
     @IBAction func handleSignUp()  {
         //Sign up code right in here

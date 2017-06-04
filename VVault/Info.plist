@@ -16,10 +16,53 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.989448727609-imhtpc1vanj58ojl3d7u3nbceg12r08t</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.google.sean7218.VVault.SignIn</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>amazonaws.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionMinimumTLSVersion</key>
+				<string>TLSv1.0</string>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>amazonaws.com.cn</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionMinimumTLSVersion</key>
+				<string>TLSv1.0</string>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -34,30 +77,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSExceptionDomains</key>
-        <dict>
-            <key>amazonaws.com</key>
-            <dict>
-                <key>NSThirdPartyExceptionMinimumTLSVersion</key>
-                <string>TLSv1.0</string>
-                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-                <false/>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-            </dict>
-            <key>amazonaws.com.cn</key>
-            <dict>
-                <key>NSThirdPartyExceptionMinimumTLSVersion</key>
-                <string>TLSv1.0</string>
-                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-                <false/>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-            </dict>
-        </dict>
-    </dict>
-
 </dict>
 </plist>
