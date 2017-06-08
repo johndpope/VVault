@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 import AWSCore
 import AWSDynamoDB
+
 class DDBMainTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet var table: UITableView!
+   var table: UITableView?
     
     var tableRows: Array<DDBTableRow>?
     var lock:NSLock?
@@ -21,10 +22,6 @@ class DDBMainTableViewController: UIViewController, UITableViewDelegate, UITable
     var needsToRefresh = false
     
     let dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
-    
-    @IBAction func unwindToMainTableViewControllerFromSearchViewController(_ unwindSegue: UIStoryboardSegue){
-        
-    }
     
     func initTable(){
         DDBDynamoDBManager.describeTable().continueWith(executor: AWSExecutor.mainThread()){ task -> Any? in // (AWSTask<AnyObject>) -> Any?
@@ -52,7 +49,7 @@ class DDBMainTableViewController: UIViewController, UITableViewDelegate, UITable
             } else {
                 self.tableRows = task.result?.items as? [DDBTableRow]
                 print("The task has successfully finsihed and scan results are \(String(describing: self.tableRows))")
-                self.table.reloadData()
+                self.table?.reloadData()
             }
             return nil
         }
@@ -224,8 +221,8 @@ class DDBMainTableViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
 
-        table.delegate = self
-        table.dataSource = self
+        table?.delegate = self
+        table?.dataSource = self
         
         tableRows = []
         lock = NSLock()

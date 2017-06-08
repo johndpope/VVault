@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		05E181AE6698FFB357848164 /* Pods_VVault.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200DBAC1188634CB6D7B5666 /* Pods_VVault.framework */; };
-		A700BB561ED9C3B4003254B0 /* DeveloperAuthenticatedIdentityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BB551ED9C3B4003254B0 /* DeveloperAuthenticatedIdentityProvider.swift */; };
+		A700BB8C1EE90082003254B0 /* VerseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BB8B1EE90082003254B0 /* VerseViewController.swift */; };
 		A71592A31EA96C3700CA49F1 /* DDBDynamoDBManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71592A21EA96C3700CA49F1 /* DDBDynamoDBManger.swift */; };
 		A71592A71EA99AD300CA49F1 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71592A61EA99AD300CA49F1 /* Document.swift */; };
 		A71592A91EAC003B00CA49F1 /* DDBTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71592A81EAC003B00CA49F1 /* DDBTableRow.swift */; };
 		A7379D711E97315A00489BAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7379D701E97315A00489BAC /* AppDelegate.swift */; };
-		A7379D761E97315A00489BAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7379D741E97315A00489BAC /* Main.storyboard */; };
 		A7379D791E97315A00489BAC /* VVault.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7379D771E97315A00489BAC /* VVault.xcdatamodeld */; };
 		A7379D7B1E97315A00489BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7379D7A1E97315A00489BAC /* Assets.xcassets */; };
 		A7379D7E1E97315A00489BAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7379D7C1E97315A00489BAC /* LaunchScreen.storyboard */; };
@@ -34,13 +33,12 @@
 /* Begin PBXFileReference section */
 		200DBAC1188634CB6D7B5666 /* Pods_VVault.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VVault.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		225258C25A89B6466AA0F6AB /* Pods-VVault.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VVault.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VVault/Pods-VVault.debug.xcconfig"; sourceTree = "<group>"; };
-		A700BB551ED9C3B4003254B0 /* DeveloperAuthenticatedIdentityProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperAuthenticatedIdentityProvider.swift; sourceTree = "<group>"; };
+		A700BB8B1EE90082003254B0 /* VerseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerseViewController.swift; sourceTree = "<group>"; };
 		A71592A21EA96C3700CA49F1 /* DDBDynamoDBManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDBDynamoDBManger.swift; sourceTree = "<group>"; };
 		A71592A61EA99AD300CA49F1 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		A71592A81EAC003B00CA49F1 /* DDBTableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDBTableRow.swift; sourceTree = "<group>"; };
 		A7379D6D1E97315A00489BAC /* VVault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7379D701E97315A00489BAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A7379D751E97315A00489BAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A7379D781E97315A00489BAC /* VVault.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VVault.xcdatamodel; sourceTree = "<group>"; };
 		A7379D7A1E97315A00489BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7379D7D1E97315A00489BAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -114,11 +112,9 @@
 				A7D31FDB1EB984B000510BBF /* Controller */,
 				A7379D701E97315A00489BAC /* AppDelegate.swift */,
 				A78A23C31EA102AA004A6FCB /* AWSClientManager.swift */,
-				A700BB551ED9C3B4003254B0 /* DeveloperAuthenticatedIdentityProvider.swift */,
 				A78A23CB1EA14EF0004A6FCB /* AmazonIdentityProviderManager.swift */,
 				A78A23CD1EA15112004A6FCB /* Constants.swift */,
 				A71592A61EA99AD300CA49F1 /* Document.swift */,
-				A7379D741E97315A00489BAC /* Main.storyboard */,
 				A7379D7C1E97315A00489BAC /* LaunchScreen.storyboard */,
 				A7379D7A1E97315A00489BAC /* Assets.xcassets */,
 				A7379D7F1E97315A00489BAC /* Info.plist */,
@@ -142,6 +138,7 @@
 				A7D31FDC1EB984FD00510BBF /* LoginViewController.swift */,
 				A7D31FD91EB9830800510BBF /* RootViewController.swift */,
 				A7D31FDE1EB9A20A00510BBF /* ConfirmViewController.swift */,
+				A700BB8B1EE90082003254B0 /* VerseViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -214,7 +211,6 @@
 				A7379D7B1E97315A00489BAC /* Assets.xcassets in Resources */,
 				A7D31FE31EBF334100510BBF /* GoogleService-Info.plist in Resources */,
 				A7FD11161E973FA4004CDCA2 /* SignUp.storyboard in Resources */,
-				A7379D761E97315A00489BAC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,10 +274,10 @@
 				A71592A31EA96C3700CA49F1 /* DDBDynamoDBManger.swift in Sources */,
 				A7FD11141E973906004CDCA2 /* SignUpViewController.swift in Sources */,
 				A78A23DB1EA96157004A6FCB /* DDBMainTableViewController.swift in Sources */,
-				A700BB561ED9C3B4003254B0 /* DeveloperAuthenticatedIdentityProvider.swift in Sources */,
 				A7379D711E97315A00489BAC /* AppDelegate.swift in Sources */,
 				A7D31FDA1EB9830800510BBF /* RootViewController.swift in Sources */,
 				A71592A71EA99AD300CA49F1 /* Document.swift in Sources */,
+				A700BB8C1EE90082003254B0 /* VerseViewController.swift in Sources */,
 				A78A23C41EA102AA004A6FCB /* AWSClientManager.swift in Sources */,
 				A71592A91EAC003B00CA49F1 /* DDBTableRow.swift in Sources */,
 				A78A23CE1EA15112004A6FCB /* Constants.swift in Sources */,
@@ -295,14 +291,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A7379D741E97315A00489BAC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A7379D751E97315A00489BAC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A7379D7C1E97315A00489BAC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
