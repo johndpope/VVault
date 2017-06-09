@@ -105,7 +105,7 @@ class VerseCollectionViewCell: UICollectionViewCell {
     
     let separatorLineView: UIView = {
         let lineView = UIView()
-        lineView.backgroundColor = UIColor.black
+        lineView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         lineView.translatesAutoresizingMaskIntoConstraints = false
         return lineView
     }()

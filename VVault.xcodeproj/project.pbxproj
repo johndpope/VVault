@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		05E181AE6698FFB357848164 /* Pods_VVault.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200DBAC1188634CB6D7B5666 /* Pods_VVault.framework */; };
 		A700BB8C1EE90082003254B0 /* VerseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BB8B1EE90082003254B0 /* VerseViewController.swift */; };
+		A700BB8E1EEA475A003254B0 /* VerseViewController+navbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A700BB8D1EEA475A003254B0 /* VerseViewController+navbar.swift */; };
 		A71592A31EA96C3700CA49F1 /* DDBDynamoDBManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71592A21EA96C3700CA49F1 /* DDBDynamoDBManger.swift */; };
 		A71592A71EA99AD300CA49F1 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71592A61EA99AD300CA49F1 /* Document.swift */; };
 		A71592A91EAC003B00CA49F1 /* DDBTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71592A81EAC003B00CA49F1 /* DDBTableRow.swift */; };
@@ -34,6 +35,7 @@
 		200DBAC1188634CB6D7B5666 /* Pods_VVault.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VVault.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		225258C25A89B6466AA0F6AB /* Pods-VVault.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VVault.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VVault/Pods-VVault.debug.xcconfig"; sourceTree = "<group>"; };
 		A700BB8B1EE90082003254B0 /* VerseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerseViewController.swift; sourceTree = "<group>"; };
+		A700BB8D1EEA475A003254B0 /* VerseViewController+navbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VerseViewController+navbar.swift"; sourceTree = "<group>"; };
 		A71592A21EA96C3700CA49F1 /* DDBDynamoDBManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDBDynamoDBManger.swift; sourceTree = "<group>"; };
 		A71592A61EA99AD300CA49F1 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		A71592A81EAC003B00CA49F1 /* DDBTableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDBTableRow.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				A7D31FD91EB9830800510BBF /* RootViewController.swift */,
 				A7D31FDE1EB9A20A00510BBF /* ConfirmViewController.swift */,
 				A700BB8B1EE90082003254B0 /* VerseViewController.swift */,
+				A700BB8D1EEA475A003254B0 /* VerseViewController+navbar.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				A7D31FDA1EB9830800510BBF /* RootViewController.swift in Sources */,
 				A71592A71EA99AD300CA49F1 /* Document.swift in Sources */,
 				A700BB8C1EE90082003254B0 /* VerseViewController.swift in Sources */,
+				A700BB8E1EEA475A003254B0 /* VerseViewController+navbar.swift in Sources */,
 				A78A23C41EA102AA004A6FCB /* AWSClientManager.swift in Sources */,
 				A71592A91EAC003B00CA49F1 /* DDBTableRow.swift in Sources */,
 				A78A23CE1EA15112004A6FCB /* Constants.swift in Sources */,
