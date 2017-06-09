@@ -201,7 +201,7 @@ class DDBMainTableViewController: UIViewController, UITableViewDelegate, UITable
                 print("Saving table has failed with error -------------> \(error)")
             } else {
                 print("Saving table row as successful and status: \(task.isCompleted)")
-                self.table.reloadData()
+                self.table?.reloadData()
             }
             return nil
         }
