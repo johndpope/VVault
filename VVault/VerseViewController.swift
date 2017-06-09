@@ -55,7 +55,7 @@ class VerseViewController: UICollectionViewController, UICollectionViewDelegateF
     
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return (CGSize(width: view.frame.width, height: 50))
+        return (CGSize(width: view.frame.width, height: 150))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -63,19 +63,51 @@ class VerseViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return (CGSize(width: view.frame.width, height: 30))
+        return (CGSize(width: view.frame.width, height: 80))
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }
 
 class VerseCollectionViewCell: UICollectionViewCell {
     
     var scriptureLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-        label.text = "Let there be light"
+        label.text = "For all have sinned and fall short of the glory of God"
         label.backgroundColor = UIColor.blue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    var scriptureReferenceLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        label.text = "Romans 3:23"
+        label.backgroundColor = UIColor.blue
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    var scriptureImageView: UIImageView = {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+        imageView.backgroundColor = UIColor.brown
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    var scriptureButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        button.backgroundColor = UIColor.cyan
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let separatorLineView: UIView = {
+        let lineView = UIView()
+        lineView.backgroundColor = UIColor.black
+        lineView.translatesAutoresizingMaskIntoConstraints = false
+        return lineView
     }()
     
     override init(frame: CGRect) {
@@ -90,11 +122,40 @@ class VerseCollectionViewCell: UICollectionViewCell {
     func setupCellView() {
         //setting up the cell view
         addSubview(scriptureLabel)
+        addSubview(scriptureImageView)
+        addSubview(scriptureButton)
+        addSubview(scriptureReferenceLabel)
+        addSubview(separatorLineView)
         
-        scriptureLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
-        scriptureLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        scriptureLabel.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        scriptureLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        // define x, y, width, height of the subview
+        scriptureLabel.leftAnchor.constraint(equalTo: scriptureImageView.rightAnchor, constant: 5).isActive = true
+        scriptureLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        scriptureLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        scriptureLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        // define x, y, width, height of the subview
+        scriptureImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        scriptureImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        scriptureImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        scriptureImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        // define x, y, width, height of the subview
+        scriptureButton.centerXAnchor.constraint(equalTo: scriptureImageView.centerXAnchor).isActive = true
+        scriptureButton.topAnchor.constraint(equalTo: scriptureImageView.bottomAnchor, constant: 5).isActive = true
+        scriptureButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        scriptureButton.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        
+        // define x, y, width, height of the subview
+        scriptureReferenceLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
+        scriptureReferenceLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
+        scriptureReferenceLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        scriptureReferenceLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        // define x, y, width, height of the subview
+        separatorLineView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        separatorLineView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        separatorLineView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        separatorLineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
     }
     
 }
